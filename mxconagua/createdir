@@ -1,0 +1,3 @@
+if [ ! -d ~/scripting/mx_conagua ]; then
+  mkdir mx_conagua
+  fi

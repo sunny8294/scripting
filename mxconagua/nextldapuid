@@ -1,0 +1,14 @@
+#!/bin/sh
+
+url="ldaps://ldap-66.example.com"
+basedn="ou=People,dc=crm,dc=example,dc=com"
+
+for i in `cat $1`; do
+    if ldapsearch -x -H "$url" -b "$basedn" uid=$i | grep uid: | awk '{print $2}' > /dev/null
+    then
+        # Do nothing
+        true
+    else
+        echo $i
+    fi
+done

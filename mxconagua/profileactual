@@ -1,0 +1,25 @@
+# ~/.profile: executed by Bourne-compatible login shells.
+
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+      . ~/.bashrc
+        fi
+	fi
+
+	mesg n
+
+	# set PATH so it includes user's private bin if it exists
+	if [ -d "$HOME/bin" ] ; then
+	    PATH="$HOME/bin:$PATH"
+	    fi
+
+	    export GPG_AGENT_TIMEOUT="34560000"
+	    if test -f $HOME/.gpg-agent-info && \
+	        kill -0 `cut -d: -f 2 $HOME/.gpg-agent-info` 2>/dev/null; then
+		    GPG_AGENT_INFO=`cat $HOME/.gpg-agent-info | cut -c 16-`
+		    else
+		    #    eval `gpg-agent --daemon --no-grab --log-file /var/log/gpg-agent.log --write-env-file $HOME/.gpg-agent-info`
+		        eval `gpg-agent --daemon --allow-preset-passphrase --default-cache-ttl $GPG_AGENT_TIMEOUT --max-cache-ttl $GPG_AGENT_TIMEOUT --log-file /var/log/gpg-agent.log --write-env-file $HOME/.gpg-agent-info`
+			fi
+			export GPG_TTY=`tty`
+			export GPG_AGENT_INFO

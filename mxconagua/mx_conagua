@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#!/bin/bash
+if [ ! -d /home/sunny/mx_conagua ]; then
+    mkdir -p /home/sunny/mx_conagua;
+    fi;
